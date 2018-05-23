@@ -1,0 +1,45 @@
+
+<div class="row marketing">
+  <div class="col-lg-6">
+    <h4>List topics</h4>
+    <ul class="collection">
+    <%= for topic <- @topics do %>
+
+    <li class="collection-item" >
+
+    <%= topic.title %>
+
+
+
+<%= if(@conn.assigns.user.id == topic.user_id) do %>
+
+    <div class="right">
+
+
+    <%= link to: topic_path(@conn,:edit, topic.id) do %>
+
+    <i class="material-icons">edit</i>
+      <% end %>
+     <%= link to: topic_path(@conn,:delete, topic) , method: :delete ,data: [confirm: "Are you sure to delete topic ?"] do %>
+    <i class="material-icons">delete</i>
+      <% end %>
+    </div>
+     <% end %>
+
+</li>
+     <% end %>
+
+
+    </ul>
+  </div>
+
+<div class="fixed-action-btn">
+
+<%= link to: topic_path(@conn,:new) , class: "btn-floating btn-large waves-effect waves-light red" do  %>
+<i class="material-icons">add</i>
+<% end %>
+
+</div>
+
+
+  </div>
