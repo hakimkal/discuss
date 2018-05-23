@@ -7,7 +7,7 @@
 
     <li class="collection-item" >
 
-    <%= topic.title %>
+    <%= link topic.title, to: topic_path(@conn,:show, topic) %>
 
 
 
